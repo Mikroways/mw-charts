@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  mimir-provisioning:
+  - apiVersion: v2
+    created: "2024-05-23T20:24:38.064331074Z"
+    description: A Helm chart for Kubernetes
+    digest: 510cffe94d263030fb01dc58379db6192d6c55a87b7df2d6b6bd5ea50eb4378c
+    name: mimir-provisioning
+    type: application
+    urls:
+    - https://github.com/Mikroways/mw-charts/releases/download/mimir-provisioning-0.1.0/mimir-provisioning-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-05-23T20:24:38.064340973Z"
