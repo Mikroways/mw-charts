@@ -1,0 +1,7 @@
+{{- if eq .Values.mode "cronjob"}}
+{{- include "mimir-provisioning.cronjob" . }}
+{{- else if eq .Values.mode "job" }}
+{{- include "mimir-provisioning.job" . }}
+{{- else }}
+{{- fail "Invalid mode. It should be one of 'cronjob' or 'job'" }}
+{{- end }}

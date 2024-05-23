@@ -1,0 +1,17 @@
+{{- $resourceLabel:=.Values.sidecar.resourceLabel -}}
+{{ range $tenant,$files:=.Values.provision }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ printf "%s-%s" (include "mimir-provisioning.fullname" $) $tenant | trunc 63 | trimSuffix "-" }}
+  annotations:
+    k8s-sidecar-target-directory: {{ $tenant | quote }}
+  labels:
+    {{ $resourceLabel | quote }}: ""
+data:
+  {{ range $file:=$files -}}
+  {{ required (printf "El campo name de los objetos files es requerido. Revise .Values.provisioning.%s" $tenant) $file.name }}: |
+    {{ (required (printf "El campo content de los objetos files es requerido. Revise .Values.provisioning.%s" $tenant) $file.content) | indent 4 | trim }}
+  {{ end -}}
+{{ end }}
