@@ -24,7 +24,7 @@ template:
   metadata:
     name: {{ printf "%s-%s" (include "mimir-provisioning.fullname" .) "provisioning" | trunc 63 | trimSuffix "-" }}
     labels:
-      {{- include "mimir-provisioning.labels" . | nindent 4 }}
+      {{- include "mimir-provisioning.labels" . | nindent 6 }}
     {{- with .Values.podAnnotations }}
     annotations:
       {{- toYaml . | nindent 8 }}
